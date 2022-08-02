@@ -64,14 +64,14 @@ void loop()
         getData();
     }
     showInfo();
-    delay(100);
+    delay(10);
 }
 
 void getData()
 {
     if (Serial.readBytes(reader_buf, 3) == 3) {
-        dac.writeA(((float) reader_buf[0]) / 100.0 * 5.0);
-        dac.writeB(((float) reader_buf[1]) / 100.0 * 5.0);
+        dac.writeA(((float) reader_buf[0]) / 255.0 * 5.0);
+        dac.writeB(((float) reader_buf[1]) / 255.0 * 5.0);
         if (reader_buf[2] & 0x01) {
             digitalWrite(directPin, HIGH);
         } else {
