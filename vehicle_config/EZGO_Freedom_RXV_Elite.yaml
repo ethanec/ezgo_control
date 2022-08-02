@@ -1,0 +1,40 @@
+vehicle_info:
+  maximum_steering_angle: 500.0
+  minimum_turning_radius: 3.74
+  wheel_base: 2.45
+
+vehicle_config:
+  # vendor_ID: 1
+  # car_ID: 1
+  # CAN_DEV_ID: 1
+
+  STEERING_ANGLE_MAX: 500.0
+# TURNING_RADIUS_MIN: 3.74
+  WHEEL_BASE: 2.45
+  WHEEL_ANGLE_MAX: 40.92573
+
+  # km/hr
+  SPEED_LIMIT: 30 # km/h
+
+  _K_ACCEL_P_UNTIL30: 8.0 #25
+  _K_ACCEL_I_UNTIL30: 0.07 #0.07 #0.9
+  _K_ACCEL_D_UNTIL30: 4.0
+  _K_ACCEL_P_UNTIL15: 8.0  #8.0  (for 0-10km/h)
+  _K_ACCEL_I_UNTIL15: 0.07 #0.07 (for 0-10km/h)
+  _K_ACCEL_D_UNTIL15: 4.0
+
+  _K_ACCEL_I_GAIN: 0
+  _K_ACCEL_OFFSET: 10
+  _ACCEL_MAX_I: 4000
+  _ACCEL_PEDAL_MAX: 255
+  _ACCEL_PEDAL_OFFSET: 90
+
+  _K_BRAKE_P: 3.0 #1.0
+  _K_BRAKE_I: 0.35 # 0.3
+  _K_BRAKE_D: 1.0 #1.0
+  _K_BRAKE_I_CYCLES: 20
+  _BRAKE_MAX_I: 1000 #1000
+  _BRAKE_PEDAL_MAX: 255
+  _BRAKE_PEDAL_STOPPING_MAX: 150
+  _BRAKE_PEDAL_STOPPING_MED: 60
+  _BRAKE_PEDAL_OFFSET: 20

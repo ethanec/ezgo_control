@@ -1,0 +1,6 @@
+<launch>
+	<arg name="info_path" default="/home/meclab/catkin_ws/src/ezgo_control/vehicle_config/EZGO_Freedom_RXV_Elite.yaml"/>
+	<rosparam command="load" file="$(arg info_path)"/>
+
+	<node name="arduino_ezgo_control" pkg="ezgo_control" type="arduino_ezgo_control" output="screen"/>
+</launch>

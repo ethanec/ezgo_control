@@ -20,7 +20,9 @@ include_directories(
 
 add_executable(arduino_ezgo_control
   src/arduino_control.cpp
-  src/SerialPort.cpp)
+  src/SerialPort.cpp
+  src/drv_serial.cpp
+)
 target_link_libraries(arduino_ezgo_control ${catkin_LIBRARIES})
 add_dependencies(arduino_ezgo_control
   ${catkin_EXPORTED_TARGETS}
@@ -36,4 +38,9 @@ message("'canlib is installed. Build kvaser.")
 endif()
 add_dependencies(ecu_ezgo_control
   ${catkin_EXPORTED_TARGETS}
+)
+
+install(DIRECTORY launch/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+  PATTERN ".svn" EXCLUDE
 )
