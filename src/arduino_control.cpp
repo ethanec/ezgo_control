@@ -7,6 +7,7 @@ pthread_mutex_t mutex;
 vehicle_config_t vehicle_config;
 vehicle_info_t vehicle_info;
 vehicle_cmd_t vehicle_cmd;
+vehicle_cmd_t prev_vehicle_cmd;
 int willExit = 0;
 
 ros::Publisher serial_pub;
@@ -119,13 +120,16 @@ static void *writer_handler(void *args)
             pthread_mutex_unlock(&mutex);
             break;
         case 2:  // UI direct control
-            data.push_back((uint8_t) vehicle_cmd.accel_stroke);
-            data.push_back((uint8_t) vehicle_cmd.brake_stroke);
-            data.push_back((uint8_t) vehicle_cmd.shift);
-            pthread_mutex_lock(&mutex);
-            serialPort->WriteBinary(data);
-            pthread_mutex_unlock(&mutex);
-            data.clear();
+            if (vehicle_cmd.accel_stroke != prev_vehicle_cmd.accel_stroke || vehicle_cmd.brake_stroke != prev_vehicle_cmd.brake_stroke 
+                || vehicle_cmd.shift != prev_vehicle_cmd.shift) {
+                data.push_back((uint8_t) vehicle_cmd.accel_stroke);
+                data.push_back((uint8_t) vehicle_cmd.brake_stroke);
+                data.push_back((uint8_t) vehicle_cmd.shift);
+                pthread_mutex_lock(&mutex);
+                serialPort->WriteBinary(data);
+                pthread_mutex_unlock(&mutex);
+                prev_vehicle_cmd = vehicle_cmd;
+            }
             break;
         }
     }
