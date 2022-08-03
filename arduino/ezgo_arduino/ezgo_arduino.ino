@@ -64,7 +64,7 @@ void loop()
         getData();
     }
     showInfo();
-    delay(10);
+    delay(40); // DAC runs functionally above 40ms delay
 }
 
 void getData()
