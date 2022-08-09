@@ -67,7 +67,7 @@ static std::vector<uint8_t> setVehicleGearDrv()
     //     pre_cmd_steering_angle = cmd_steering_angle;
     // }
 
-    PedalControl((double) current_velocity, (double) cmd_velocity);
+    vehicle_control((double) current_velocity, (double) cmd_velocity);
     // SteeringControl(cmd_steering_angle);
 
     msg[0] = (uint8_t) vehicle_cmd.accel_stroke;

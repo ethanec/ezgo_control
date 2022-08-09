@@ -21,7 +21,7 @@ include_directories(
 add_executable(arduino_ezgo_control
   src/arduino_control.cpp
   src/SerialPort.cpp
-  src/drv_serial.cpp
+  #src/drv_serial.cpp
 )
 target_link_libraries(arduino_ezgo_control ${catkin_LIBRARIES})
 add_dependencies(arduino_ezgo_control
